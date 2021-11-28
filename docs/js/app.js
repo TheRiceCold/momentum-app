@@ -6,4 +6,9 @@ window.onload = () => {
   backgroundImage()
   loadName()
   setInterval(getTime, 1000)
+
+  // test fetching JSON 
+  fetch("https://jsonplaceholder.typicode.com/todos")
+  .then(res => res.json())
+  .then(data => console.log(data))
 }
