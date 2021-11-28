@@ -1,28 +1,16 @@
 @keyframes blink {
-  0% {
-    background: rgba(255, 255, 255, 0.5);
-  }
-  100% {
-    background: rgba(255, 255, 255, 0);
-  }
+  0% {background: rgba(255, 255, 255, 0.5);}
+  100% {background: rgba(255, 255, 255, 0);}
 }
 
 @keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 100;
-  }
+  0% {opacity: 0;}
+  100% {opacity: 100;}
 }
 
 @keyframes fadeout {
-  0% {
-    opacity: 100;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% {opacity: 100;}
+  100% {opacity: 0;}
 }
 
 @keyframes rotatex {
@@ -30,7 +18,33 @@
     opacity: 0;
     transform: rotateX(90deg);
   }
-  100% {
-    transform: rotateX(0);
-  }
+  100% {transform: rotateX(0);}
+}
+
+.rotatex {
+  animation: rotatex 500ms linear;
+}
+
+.blink {
+  animation: blink 1s;
+}
+
+.fadein {
+  animation: fadein 0.7s;
+}
+
+.fadeout {
+  animation: fadeout 0.9s;
+}
+
+@keyframes bottomcheck{
+  0%   { width: 0; }
+  50%  { width: 0; }
+  100% { width: 6px; }
+}
+
+@keyframes topcheck{
+  0%   { width: 0; }
+  50%  { width: 0; }
+  100% { width: 15px; }  
 }

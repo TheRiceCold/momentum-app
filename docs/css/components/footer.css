@@ -1,0 +1,35 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 5vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; }
+  footer i {
+    cursor: pointer;
+    opacity: .75;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    font-size: 1.15em; }
+  footer i:hover {
+    opacity: 1; }
+  footer h4:nth-child(2) {
+    text-align: center;
+    height: 2vh;
+    font-weight: 200;
+    transform: translateY(-30px);
+    transition: transform .5s ease-in-out;
+    width: 36vw; }
+  footer h4:nth-child(2):hover {
+    font-weight: 200;
+    transform: translateY(-60px); }
+  footer h4:last-child {
+    cursor: pointer;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    opacity: .75; }
+  footer h4:hover {
+    opacity: 1; }
+
+/*# sourceMappingURL=footer.css.map */

@@ -1,14 +1,9 @@
 import {setRenameBtn, setRenameForm} from './rename.js'
-import { NAME, saveName } from './store.js'
+import { NAME, saveName, handleSubmit } from './store.js'
+import { resize } from './resize.js'
 
 const greetingBox = document.querySelector('.js-greetingBox')
 const hide = document.querySelector('#hide')
-
-function resize() {
-  const renameInput = document.querySelector('.js-renameInput')
-  hide.innerText = renameInput.value
-  renameInput.style.width = hide.offsetWidth + 'px'
-}
 
 function greetingWhileRename() {
   const hourForGreet = new Date().getHours()
@@ -55,7 +50,7 @@ function handleRenameBtnClick(event) {
   renameInput.addEventListener("animationend", () => renameInput.classList.remove("blink"))
 }
 
-function genRenameForm() {
+export function genRenameForm() {
   const renameForm = document.createElement("form")
   const renameInput = document.createElement("input")
   renameInput.type = "text"
@@ -69,7 +64,7 @@ function genRenameForm() {
   greetingBox.appendChild(renameForm)
 }
 
-function genBtn() {
+export function genBtn() {
   const renameBtn = document.createElement("i")
   renameBtn.classList.add("fas")
   renameBtn.classList.add("fa-pen")
@@ -87,10 +82,6 @@ const form = document.querySelector(".js-nameForm")
 const input = form.querySelector("input")
 const greeting = document.querySelector(".js-greeting")
 const hajimemashite = document.querySelector(".js-hajimemashite")
-const clockBoxForGreetingJs = document.querySelector(".js-clockBox")
-const clockForGreetingJs = clockBoxForGreetingJs.querySelector(".js-clock")
-const toDoBox = document.querySelector(".js-toDoBox")
-const dummyBox = document.querySelector(".js-dummyBox")
 
 export function resizeGreet() {
   input.addEventListener("input", () => {
@@ -111,69 +102,11 @@ function addHoverOnRenameBtn() {
   })
 }
 
-function seeDummyBox() {
-  dummyBox.classList.remove("invisible")
-}
-
-function seeToDoBox() {
-  toDoBox.classList.remove("invisible")
-}
-
-function seeClockBox() {
-  clockBoxForGreetingJs.classList.remove("invisible")
-}
-
-function seeGreeting() {
+export function seeGreeting() {
   greeting.classList.remove("invisible")
   addHoverOnRenameBtn()
 }
 
-function seeAfterSubmit() {
-  hajimemashite.addEventListener("animationend", () => {
-    seeDummyBox()
-    seeClockBox()
-    seeGreeting()
-    seeToDoBox()
-    genRenameForm()
-    genBtn()
-  })
-}
-
-export function successLoad() {
-  removeForm()
-  removeHajimemashite()
-  seeDummyBox()
-  seeClockBox()
-  seeGreeting()
-  seeToDoBox()
-  genRenameForm() 
-  genBtn()
-}
-
-function removeForm() {
-  form.classList.remove("showing")
-}
-
-function removeHajimemashite() {
-  hajimemashite.classList.remove("showing")
-}
-
-export function removeFormAni() {
-  form.classList.add("fadeout")
-  form.removeEventListener("submit", handleSubmit)
-  form.addEventListener("animationend", () => {
-    form.classList.remove("fadeout")
-    form.classList.remove("showing")
-  })
-}
-
-export function removeHajimemashiteAni() {
-  hajimemashite.classList.add("fadeout")
-  hajimemashite.addEventListener("animationend", () => {
-    hajimemashite.classList.remove("fadeout")
-    hajimemashite.classList.remove("showing")
-  })
-}
 
 export function paintGreeting(name) {
   const hourForGreet = new Date().getHours()

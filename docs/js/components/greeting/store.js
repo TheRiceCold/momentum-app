@@ -1,18 +1,48 @@
 import { resizeGreet } from "./greeting.js"
-import {removeHajimemashiteAni, successLoad, paintGreeting} from './greeting.js'
+import {paintGreeting} from './greeting.js'
+import { removeHajimemashiteAni, removeFormAni } from "./animation.js"
+import { seeGreeting, genRenameForm, genBtn } from './greeting.js'
 
 export const NAME = 'name'
 const form = document.querySelector(".js-nameForm")
 const input = form.querySelector("input")
+const dummyBox = document.querySelector(".js-dummyBox")
+const hajimemashite = document.querySelector(".js-hajimemashite")
+const toDoBox = document.querySelector(".js-toDoBox")
+const clockBoxForGreetingJs = document.querySelector(".js-clockBox")
+const clockForGreetingJs = clockBoxForGreetingJs.querySelector(".js-clock")
 
 export function saveName(name) {
   localStorage.setItem(NAME, name)
 }
 
-function handleSubmit(event) {
+function seeAfterSubmit() {
+  hajimemashite.addEventListener("animationend", () => {
+    seeDummyBox()
+    clockBoxForGreetingJs.classList.remove("invisible")
+    seeGreeting()
+    toDoBox.classList.remove("invisible")
+    genRenameForm()
+    genBtn()
+  })
+}
+
+
+function successLoad() {
+  form.classList.remove("showing")
+  hajimemashite.classList.remove("showing")
+  dummyBox.classList.remove("invisible")
+  clockBoxForGreetingJs.classList.remove("invisible")
+  seeGreeting()
+  toDoBox.classList.remove("invisible")
+  genRenameForm() 
+  genBtn()
+}
+
+export function handleSubmit(event) {
   event.preventDefault()
   const currentValue = input.value
-  saveName(currentValue)
+  localStorage.setItem(NAME, currentValue)
   input.value = ""
   removeHajimemashiteAni()
   removeFormAni()
@@ -27,7 +57,7 @@ function askForName() {
 
 export function loadName() {
   const name = localStorage.getItem(NAME)
-  if (name === null) 
+  if (!name) 
     askForName()
   else {
     successLoad()

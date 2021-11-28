@@ -18,8 +18,11 @@ export const mainHTML = `
   </div>
   <div class="js-toDoBox toDoBox fadein invisible">
     <form class="js-toDoForm toDoForm">
-      <label>What is your main focus today?</label>
+      <label id="mainFocus">What is your main focus today?</label>
       <input type="text"/>
     </form>
+    <ul class="to-do">
+      <li></li>
+    </ul>
   </div> 
 </main>`
