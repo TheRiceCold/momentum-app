@@ -1,0 +1,237 @@
+@import 'utils/resets', 'animations/anim.scss';
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.nameForm,
+.hajimemashite,
+.renameBtn {
+  display: none;
+}
+
+.renameForm {
+  display: inline;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 5vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+footer i {
+  cursor: pointer;
+  opacity: .75;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  font-size: 1.15em;
+}
+
+footer i:hover {
+  opacity: 1;
+}
+
+footer h4:nth-child(2) {
+  text-align: center;
+  height: 2vh;
+  font-weight: 200;
+  transform: translateY(-30px);
+  transition: transform .5s ease-in-out;
+  width: 36vw;
+}
+
+footer h4:nth-child(2):hover {
+  font-weight: 200;
+  transform: translateY(-60px);
+}
+
+footer h4:last-child {
+  cursor: pointer;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.rotatex {
+  animation: rotatex 500ms linear;
+}
+
+.blink {
+  animation: blink 1s;
+}
+
+.fadein {
+  animation: fadein 0.7s;
+}
+
+.fadeout {
+  animation: fadeout 0.9s;
+}
+
+.invisible {
+  display: none;
+}
+
+.showing {
+  display: block;
+}
+
+.showingAsInline {
+  display: inline;
+}
+
+.weather {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  font-size: 17px;
+}
+
+.mainBox {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.dummyBox {
+  height: 20vh;
+}
+
+.hajimemashite {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 4vh;
+}
+
+.nameForm {
+  text-align: center;
+}
+
+.nameForm input {
+  text-align: center;
+  font-size: 46px;
+  height: 50px;
+  width: 40vw;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid white;
+}
+
+.nameForm input:focus {
+  outline: none;
+}
+
+.clock {
+  margin: 0;
+  font-size: 160px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  animation: rotatex 500ms linear;
+}
+
+.greetingBox {
+  display: flex;
+  align-items: center;
+}
+
+.greetingBox i {
+  cursor: pointer;
+}
+
+.greeting {
+  padding-left: 30px;
+  font-size: 46px;
+  margin-right: 12px;
+  animation: rotatex 500ms linear;
+}
+
+.renameBtn {
+  opacity: 0;
+  transition: all 100ms;
+}
+
+#hide {
+  position: absolute;
+  height: 0;
+  overflow: hidden;
+  white-space: pre;
+  font-size: 46px;
+}
+
+.renameForm input {
+  text-align: center;
+  font-size: 46px;
+  height: 46px;
+  min-width: 10px;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid white;
+}
+
+.renameForm input::placeholder {
+  color: white;
+}
+
+.renameForm input:focus {
+  outline: none;
+}
+
+.toDoBox {
+  margin-top: 20px;
+}
+
+.toDoBox h4 {
+  font-weight: 200;
+}
+
+.toDoForm {
+  display: flex;
+  flex-direction: column;
+  font-size: 2.25em;
+}
+
+.toDoForm input {
+  margin-top: 2vh;
+  font-size: 1em;
+  text-align: center;
+  width: 37vw;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid white;
+  animation: rotatex 500ms linear;
+  margin-bottom: 20vh;
+}
+
+.toDoForm input::placeholder {
+  color: white;
+  opacity: 0.9;
+}
+
+.toDoForm input:focus {
+  outline: none;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: fadein 700ms;
+}
