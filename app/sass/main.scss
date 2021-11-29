@@ -1,5 +1,5 @@
 @import 'utils/resets', 'animations/anim.scss';
-@import 'components/footer.scss';
+@import 'components/footer.scss', 'components/todo.scss';
 
 body {
   margin: 0;
@@ -44,13 +44,6 @@ header {
 
 .showingAsInline {
   display: inline;
-}
-
-.weather {
-  position: absolute;
-  right: 13px;
-  top: 13px;
-  font-size: 17px;
 }
 
 .mainBox {
@@ -179,7 +172,7 @@ header {
 }
 
 .has-goal {
-  margin-top: 5em;
+  margin-top: 1em;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }

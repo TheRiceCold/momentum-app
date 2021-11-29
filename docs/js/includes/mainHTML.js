@@ -21,8 +21,6 @@ export const mainHTML = `
       <label id="mainFocus">What is your main focus today?</label>
       <input type="text"/>
     </form>
-    <ul class="to-do">
-      <li></li>
-    </ul>
+    <ul class="to-do"><li></li></ul>
   </div> 
 </main>`
