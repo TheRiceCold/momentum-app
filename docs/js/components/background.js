@@ -1,4 +1,4 @@
-const imgNum = 3
+const imgNum = 4
 const randomImg = Math.floor(Math.random() * imgNum)
 
 function handleImageLoad(event) {

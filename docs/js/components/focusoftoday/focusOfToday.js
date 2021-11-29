@@ -1,60 +1,56 @@
-let todoForm = document.querySelector('.toDoForm')
-let input = todoForm.querySelector('input')
+let input = document.querySelector('.toDoForm input')
 let node = document.createElement('LI')
 let todoInput = document.querySelector('ul')
 let mainFocus = document.querySelector('#mainFocus')
 
-if (localStorage.buttonClass === "active") node.className = "done"
-else node.className = ""
+export function focusOfToday() {	
+	if(!localStorage.focus) { 
+		input.addEventListener('keypress', e => {
+			if(e.key === 'Enter') // or keyCode 13 
+				if (input.value !== '') {
+					localStorage.focus = input.value
+					showTodo()
+				}
+		})
+	} 
+	else showTodo()
+}
 
-if(!localStorage.hasOwnProperty('todo') || (localStorage.todo === '' || localStorage.todo === null)){ 
-	todoForm.addEventListener('submit', e => {
-		e.preventDefault()
-		if(e.keyCode === 13 && input.value !== '') {
-			localStorage.todo = input.value
-			focusOfToday()
-		}
-	})
-} 
-else focusOfToday()
-
-export function focusOfToday(){
+function showTodo(){
 	mainFocus.innerText = 'Today\'s Goal: '
 	mainFocus.className += ' has-goal'
 	node.innerHTML = `
-  <span class="doneTodo">
-  <span class="check-box"></span>
-  </span><span class="to-do-item">
-  ${localStorage.todo}</span><span class="remove">x</span>`
-  todoInput.appendChild(node)
+	<span class="doneTodo">
+	<span class="check-box"></span>
+	</span><span class="to-do-item">
+	${localStorage.focus}</span><span class="remove">x</span>`
+	todoInput.appendChild(node)
 	input.style.display = 'none'
 
-	todoForm.addEventListener('submit', e => {
-		if(e.keyCode === 13 && input.value !== ''){
-			e.preventDefault()
-			localStorage.todo = input.value
-			focusOfToday()
+	input.addEventListener('keypress', e => {
+		if(e.key === 'Enter' && input.value !== ''){
+			localStorage.focus = input.value
+			showTodo()
 		}
 	})
 
-	//checkmark
-	let button = document.querySelector('.doneTodo')
+	const button = document.querySelector('.doneTodo')
 	button.addEventListener('click', () => {
-		this.parentNode.classList.toggle('done')
-		if(this.parentNode.className === "done")
-			localStorage.buttonClass = "active"
-		else delete localStorage.buttonClass
-		
-	});
+		button.parentNode.classList.toggle('done')
+		if(button.parentNode.className === "done")
+			localStorage.focusDone = true
+		else 
+			localStorage.focusDone = false
+	})
 
-	//X button
-	let remove = document.querySelector('.remove')
+	const remove = document.querySelector('span.remove')
 	remove.addEventListener('click', () => {
 		node.parentNode.removeChild(node)
+		localStorage.focus = ''
 		mainFocus.className = "goal"
-		mainFocus.innerText = 'What Is Your Main Focus For Today?'
+		mainFocus.textContent = 'What is your main focus for today?'
 		input.style.display = ''
 		input.value = ''
 		node.className = ''
-	});
+	})
 }

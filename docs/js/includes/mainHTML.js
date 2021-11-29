@@ -2,6 +2,7 @@ export const mainHTML = `
 <main class="mainBox">
   <div class="js-dummyBox dummyBox invisible"></div>
   <div class="js-clockBox clockBox fadein invisible">
+    <p id="date"></p>
     <h1 class="js-clock clock"></h1>
   </div>
   <div class="js-wholeGreeting">
@@ -17,10 +18,10 @@ export const mainHTML = `
     </form>
   </div>
   <div class="js-toDoBox toDoBox fadein invisible">
-    <form class="js-toDoForm toDoForm">
+    <div class="js-toDoForm toDoForm">
       <label id="mainFocus">What is your main focus today?</label>
       <input type="text"/>
-    </form>
-    <ul class="to-do"><li></li></ul>
+    </div>
+    <ul class="to-do"></ul>
   </div> 
 </main>`
