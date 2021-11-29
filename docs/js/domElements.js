@@ -17,6 +17,7 @@ export const mainFocus = document.querySelector('#mainFocus')
 export const greeting = document.querySelector('.js-greeting')
 export const greetingBox = document.querySelector('.js-greetingBox')
 export const hide = document.querySelector('#hide')
+export const hajimemashite = document.querySelector('.js-hajimemashite')
 
 // Name Form
 export const nameForm = document.querySelector('.js-nameForm')
