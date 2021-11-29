@@ -1,9 +1,9 @@
 export const mainHTML = `
 <main class="mainBox">
   <div class="js-dummyBox dummyBox invisible"></div>
-  <div class="js-clockBox clockBox fadein invisible">
+  <div id="dateBox" class="clockBox fadein invisible">
     <p id="date"></p>
-    <h1 class="js-clock clock"></h1>
+    <h1 id="clock" class="clock"></h1>
   </div>
   <div class="js-wholeGreeting">
     <div class="js-hajimemashite hajimemashite fadein showing">

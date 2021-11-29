@@ -1,38 +1,9 @@
-let listArray
-const inputBox = document.querySelector(".inputField input")
-const addBtn = document.querySelector(".inputField button")
-const todoList = document.querySelector(".wrapper .todoList")
-const deleteAllBtn = document.querySelector(".footer button")
-
-inputBox.onkeyup = () => {
-  let userEnteredValue = inputBox.value
-  if(userEnteredValue.trim() != 0) 
-    addBtn.classList.add("active") 
-  else 
-    addBtn.classList.remove("active") 
-}
-
-addBtn.addEventListener('click', () => {
-  let userEnteredValue = inputBox.value
-  let getLocalStorageData = localStorage.getItem('New Todo')
-  listArray = getLocalStorageData == null ? [] : JSON.parse(getLocalStorageData)
-  listArray.push(userEnteredValue)
-  localStorage.setItem("New Todo", JSON.stringify(listArray))
-  showTasks()
-  addBtn.classList.remove("active")
-})
+import { inputBox, todoList } from '../../domElements.js'
 
 
-function deleteTask(index){
-  let getLocalStorageData = localStorage.getItem('New Todo')
-  listArray = JSON.parse(getLocalStorageData)
-  listArray.splice(index, 1)
-  localStorage.setItem('New Todo', JSON.stringify(listArray))
-  showTasks()
-}
-
+let listArray = []
 export function showTasks(){
-  let getLocalStorageData = localStorage.getItem('New Todo');
+  let getLocalStorageData = localStorage.getItem('todoList');
   listArray = getLocalStorageData == null ? [] : JSON.parse(getLocalStorageData)
   let newTask = ''
   listArray.forEach((element, index) => 
@@ -45,4 +16,23 @@ export function showTasks(){
   )
   todoList.innerHTML = newTask
   inputBox.value = ''
+}
+
+inputBox.addEventListener('keypress', e => {
+  if(e.key === 'Enter') {
+    if(inputBox.value.trim() != 0) { 
+      listArray = localStorage.todoList == null ? [] : JSON.parse(localStorage.todoList)
+      listArray.push(inputBox.value)
+      localStorage.setItem('todoList', JSON.stringify(listArray))
+      showTasks()
+    }
+  }
+})
+
+function deleteTask(index){
+  let getLocalStorageData = localStorage.getItem('todoList')
+  listArray = JSON.parse(getLocalStorageData)
+  listArray.splice(index, 1)
+  localStorage.setItem('todoList', JSON.stringify(listArray))
+  showTasks()
 }

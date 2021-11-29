@@ -54,6 +54,15 @@ header {
   align-items: center;
 }
 
+#dateBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    font-size: 1.5em;
+  }
+}
+
 .dummyBox {
   height: 20vh;
 }

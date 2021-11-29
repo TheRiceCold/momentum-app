@@ -11,4 +11,3 @@ includeHTML(
   footerHTML,
   todoHTML,
 )
-

@@ -8,7 +8,7 @@ function handleImageLoad(event) {
 
 export function backgroundImage() {
   const image = new Image()
-  image.src = `images/${randomImg + 1}.jpg`
+  image.src = `img/${randomImg+1}.jpg`
   image.classList.add('invisible')
   document.body.prepend(image)
   image.addEventListener('load', handleImageLoad)

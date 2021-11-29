@@ -9,7 +9,7 @@ const input = form.querySelector("input")
 const dummyBox = document.querySelector(".js-dummyBox")
 const hajimemashite = document.querySelector(".js-hajimemashite")
 const toDoBox = document.querySelector(".js-toDoBox")
-const clockBoxForGreetingJs = document.querySelector(".js-clockBox")
+const clockBoxForGreetingJs = document.getElementById('dateBox')
 const clockForGreetingJs = clockBoxForGreetingJs.querySelector(".js-clock")
 
 export function saveName(name) {
