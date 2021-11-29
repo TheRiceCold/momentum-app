@@ -22,6 +22,10 @@ body {
   display: none;
 }
 
+.renameBtn:hover {
+  opacity: 1;
+}
+
 .renameForm {
   display: inline;
 }
@@ -47,6 +51,7 @@ header {
 }
 
 .mainBox {
+  margin-top: 10vh;
   display: flex;
   flex-direction: column;
   height: 90vh;
@@ -61,10 +66,6 @@ header {
   p {
     font-size: 1.5em;
   }
-}
-
-.dummyBox {
-  height: 20vh;
 }
 
 .hajimemashite {
@@ -117,7 +118,7 @@ header {
 
 .renameBtn {
   opacity: 0;
-  transition: all 100ms;
+  transition: all .3s;
 }
 
 #hide {

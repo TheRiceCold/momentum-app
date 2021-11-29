@@ -1,6 +1,5 @@
 export const mainHTML = `
 <main class="mainBox">
-  <div class="js-dummyBox dummyBox invisible"></div>
   <div id="dateBox" class="clockBox fadein invisible">
     <p id="date"></p>
     <h1 id="clock" class="clock"></h1>

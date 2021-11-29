@@ -1,7 +1,4 @@
-let input = document.querySelector('.toDoForm input')
-let node = document.createElement('LI')
-let todoInput = document.querySelector('ul')
-let mainFocus = document.querySelector('#mainFocus')
+import { input, node, todoInput, mainFocus } from '../../domElements.js'
 
 export function focusOfToday() {	
 	if(!localStorage.focus) { 
@@ -17,8 +14,10 @@ export function focusOfToday() {
 }
 
 function showTodo(){
-	mainFocus.innerText = 'Today\'s Goal: '
-	mainFocus.className += ' has-goal'
+	mainFocus.textContent = 'Today\'s Goal: '
+	mainFocus.className += 'has-goal'
+	mainFocus.style.fontSize = '.75em'
+	mainFocus.style.fontWeight = '600'
 	node.innerHTML = `
 	<span class="doneTodo">
 	<span class="check-box"></span>
@@ -37,18 +36,19 @@ function showTodo(){
 	const button = document.querySelector('.doneTodo')
 	button.addEventListener('click', () => {
 		button.parentNode.classList.toggle('done')
-		if(button.parentNode.className === "done")
-			localStorage.focusDone = true
-		else 
-			localStorage.focusDone = false
+		localStorage.focusDone = (button.parentNode.className === 'done')
+
 	})
 
 	const remove = document.querySelector('span.remove')
 	remove.addEventListener('click', () => {
 		node.parentNode.removeChild(node)
-		localStorage.focus = ''
-		mainFocus.className = "goal"
+		delete localStorage.focus
+		delete localStorage.focusDone
+		mainFocus.className = 'goal'
 		mainFocus.textContent = 'What is your main focus for today?'
+		mainFocus.style.fontSize = '1em'
+		mainFocus.style.fontWeight = '100'
 		input.style.display = ''
 		input.value = ''
 		node.className = ''
