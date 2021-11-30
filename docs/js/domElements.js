@@ -27,3 +27,6 @@ export const nameInput = nameForm.querySelector('input')
 
 // 
 export const logoutBtn = document.getElementById('logout')
+export const quoteOfToday = document.getElementById('quote')
+export const quotePerson = document.getElementById('quotePerson')
+export const skipQuote = document.getElementById("skipQuote")

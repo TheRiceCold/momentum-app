@@ -28,7 +28,8 @@ footer {
       margin: 0 20px;
       font-size: .95em;
       opacity: .5;
-      cursor: pointer; }
+      cursor: pointer;
+      text-decoration: none; }
     footer #quotes a:hover {
       opacity: 1; }
   footer h4:last-child {
