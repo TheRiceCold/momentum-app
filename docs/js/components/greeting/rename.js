@@ -1,68 +1,49 @@
-import { paintGreeting, greetingWhileRename } from './greeting.js'
+import { showGreeting, greetingTime } from './greeting.js'
 import { resize } from './resize.js'
 import { greetingBox } from '../../domElements.js'
 import { NAME } from './nameForm.js'
 
-export function setRenameBtn(active = true) {
-  const renameBtn = document.querySelector(".js-renameBtn")
+function setRenameActive(active = true) {
+  const renameForm = document.querySelector('.js-renameForm')
   if (active)
-    renameBtn.classList.add("showingAsInline")
+    renameForm.classList.remove('invisible')
   else 
-    renameBtn.classList.remove("showingAsInline")
+    renameForm.classList.add('invisible')
 }
 
-export function setRenameForm(active = true) {
-  const renameForm = document.querySelector(".js-renameForm")
-  if (active)
-    renameForm.classList.remove("invisible")
-  else
-    renameForm.classList.add("invisible")
-}
-
-export function handleSubmitRename(event) {
-  event.preventDefault()
+function handleSubmitRename(e) {
+  if (e.key !== 'Enter') return
   const renameInput = document.querySelector('.js-renameForm .js-renameInput')
   localStorage.name = renameInput.value
-  paintGreeting(renameInput.value)
-  setRenameBtn()
-  setRenameForm(false)
-  const nameExp = document.querySelector('.js-nameExp')
-  nameExp.classList.add('blink')
-  nameExp.addEventListener('animationend', () => nameExp.classList.remove('blink'))
+  showGreeting(renameInput.value)
+  setRenameActive(false)
+  const curName = document.querySelector('.currentName')
 }
 
 function handleRenameBtnClick(event) {
-  setRenameForm()
-  setRenameBtn(false)
-  greetingWhileRename()
+  setRenameActive()
+  greetingTime()
   const renameInput = document.querySelector('.js-renameInput')
   renameInput.value = localStorage.getItem(NAME)
   resize()
-  renameInput.classList.add('blink')
-  renameInput.addEventListener('animationend', () => renameInput.classList.remove('blink'))
 }
 
-export function genBtn() {
+export function renameBtn() {
   const renameBtn = document.createElement('i')
-  renameBtn.classList.add('fas')
-  renameBtn.classList.add('fa-pen')
+  renameBtn.classList.add('fas', 'fa-pen')
   renameBtn.addEventListener('click', handleRenameBtnClick)
   renameBtn.classList.add('js-renameBtn')
   renameBtn.classList.add('renameBtn')
-  renameBtn.classList.add('showingAsInline')
   greetingBox.appendChild(renameBtn)
 }
 
 export function genRenameForm() {
-  const renameForm = document.createElement('form')
+  const renameBox = document.createElement('div')
   const renameInput = document.createElement('input')
-  renameInput.type = 'text'
   renameInput.classList.add('js-renameInput')
-  renameForm.classList.add('invisible')
-  renameForm.classList.add('js-renameForm')
-  renameForm.classList.add('renameForm')
-  renameForm.addEventListener('input', resize)
-  renameForm.addEventListener('submit', handleSubmitRename)
-  renameForm.appendChild(renameInput)
-  greetingBox.appendChild(renameForm)
+  renameBox.classList.add('invisible', 'js-renameForm', 'renameForm')
+  renameBox.addEventListener('input', resize)
+  renameBox.addEventListener('keypress', handleSubmitRename)
+  renameBox.appendChild(renameInput)
+  greetingBox.appendChild(renameBox)
 }

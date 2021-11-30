@@ -6,6 +6,12 @@ body {
   overflow: hidden;
 }
 
+header img {
+  height: 4vh; 
+  margin-top: 2vh; 
+  margin-left: 1vw;
+}
+
 .bgImage {
   position: absolute;
   top: 0;
@@ -44,10 +50,6 @@ header {
 
 .showing {
   display: block;
-}
-
-.showingAsInline {
-  display: inline;
 }
 
 .mainBox {
@@ -119,6 +121,7 @@ header {
 .renameBtn {
   opacity: 0;
   transition: all .3s;
+  display: inline;
 }
 
 #hide {

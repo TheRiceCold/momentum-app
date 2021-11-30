@@ -1,65 +1,62 @@
 'use strict'
-import { paintGreeting, removeHajimemashiteAni } from './greeting.js'
-import { nameForm, nameInput, greetingBox, hajimemashite, greeting } from '../../domElements.js'
+import { showGreeting, removeGreetingAnim } from './greeting.js'
+import { 
+  nameForm, nameInput, greetingBox, 
+  askForName, greeting, dateBox,
+  toDoBox } from '../../domElements.js'
 import { resize, resizeGreet } from './resize.js'
-import { setRenameBtn, setRenameForm, genBtn, handleSubmitRename, genRenameForm } from './rename.js'
+import { renameBtn, genRenameForm } from './rename.js'
 
 export const NAME = 'name'
-const toDoBox = document.querySelector('.js-toDoBox')
-const clockBoxForGreetingJs = document.getElementById('dateBox')
-const clockForGreetingJs = clockBoxForGreetingJs.querySelector('.js-clock')
 
 function seeAfterSubmit() {
-  hajimemashite.addEventListener('animationend', () => {
-    clockBoxForGreetingJs.classList.remove('invisible')
+  askForName.addEventListener('animationend', () => {
+    dateBox.classList.remove('invisible')
     greeting.classList.remove('invisible')
     toDoBox.classList.remove('invisible')
     genRenameForm()
-    genBtn()
+    renameBtn()
   })
 }
 
 function successLoad() {
   nameForm.classList.remove('showing')
-  hajimemashite.classList.remove('showing')
-  clockBoxForGreetingJs.classList.remove('invisible')
+  askForName.classList.remove('showing')
+  dateBox.classList.remove('invisible')
   greeting.classList.remove('invisible')
   toDoBox.classList.remove('invisible')
   genRenameForm() 
-  genBtn()
+  renameBtn()
 }
 
-export function handleSubmit(event) {
-  event.preventDefault()
+export function submitName(e) {
+  if (e.key !== 'Enter') return
+
   const currentValue = nameInput.value
   localStorage.setItem(NAME, currentValue)
-  nameInput.value = ''
-  removeHajimemashiteAni()
+  removeGreetingAnim()
   removeFormAni()
   seeAfterSubmit()
-  paintGreeting(currentValue)
+  showGreeting(currentValue)
 }
 
 function removeFormAni() {
   nameForm.classList.add('fadeout')
-  nameForm.removeEventListener('submit', handleSubmit)
+  nameForm.removeEventListener('keypress', submitName)
   nameForm.addEventListener('animationend', () => {
     nameForm.classList.remove('fadeout')
     nameForm.classList.remove('showing')
   })
 }
 
-function askForName() {
-  resizeGreet()
-  nameForm.addEventListener('submit', handleSubmit)
-}
-
 export function loadName() {
   const name = localStorage.getItem(NAME)
-  if (!name) 
-    askForName()
+  if (!name) {
+    resizeGreet()
+    nameForm.addEventListener('keypress', submitName)
+  }
   else {
     successLoad()
-    paintGreeting(name)
+    showGreeting(name)
   }
 }

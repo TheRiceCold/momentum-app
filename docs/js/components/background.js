@@ -1,9 +1,9 @@
 const imgNum = 4
 const randomImg = Math.floor(Math.random() * imgNum)
 
-function handleImageLoad(event) {
-  event.target.classList.remove('invisible')
-  event.target.classList.add('bgImage')
+function loadImage(e) {
+  e.target.classList.remove('invisible')
+  e.target.classList.add('bgImage')
 }
 
 export function backgroundImage() {
@@ -11,5 +11,5 @@ export function backgroundImage() {
   image.src = `img/${randomImg+1}.jpg`
   image.classList.add('invisible')
   document.body.prepend(image)
-  image.addEventListener('load', handleImageLoad)
+  image.addEventListener('load', loadImage)
 }

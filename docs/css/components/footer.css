@@ -6,13 +6,12 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end; }
-  footer i {
+  footer h4:first-child {
     cursor: pointer;
     opacity: .75;
     margin-left: 15px;
-    margin-bottom: 15px;
-    font-size: 1.15em; }
-  footer i:hover {
+    margin-bottom: 15px; }
+  footer h4:first-child:hover {
     opacity: 1; }
   footer h4:nth-child(2) {
     text-align: center;

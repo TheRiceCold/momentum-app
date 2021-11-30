@@ -1,11 +1,9 @@
 import { dateBox, clock, dateToday } from "../domElements.js"
 
-export function getTime(){
+export function dateAndTime() {
 	const date = new Date()
-	const hour = date.getHours()
-	const minute = date.getMinutes()
-	const month = date.getMonth() + 1
+	const month = date.getMonth()+1
 	const today = date.getDate()
-	clock.textContent = `${ hour < 10 ? `0${hour}` : hour}:${ minute < 10 ? `0${minute}` : minute}`
+	clock.textContent = `${ date.toLocaleString([], { hour: '2-digit', minute: '2-digit' })}`
 	dateToday.textContent = month+'/'+today 
 }

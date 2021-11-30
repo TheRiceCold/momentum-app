@@ -1,4 +1,4 @@
-export const todoHTML = `
+export const todoListHTML = `
 <div class="wrapper">
   <div class="inputField">
     <input type="text" placeholder="Add your new todo">

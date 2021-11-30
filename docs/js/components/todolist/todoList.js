@@ -1,16 +1,17 @@
 import { inputBox, todoList } from '../../domElements.js'
 
-
 let listArray = []
-export function showTasks(){
-  let getLocalStorageData = localStorage.getItem('todoList');
-  listArray = getLocalStorageData == null ? [] : JSON.parse(getLocalStorageData)
+export function showTasks() {
+  listArray = localStorage.todoList == null ? [] : JSON.parse(localStorage.todoList)
   let newTask = ''
   listArray.forEach((element, index) => 
     newTask += `
     <li>${element}
       <span class="icon" onclick="deleteTask(${index})">
         <i class="fas fa-trash"></i>
+      </span>
+      <span class="icon" onclick="deleteTask(${index})">
+        <i class="fas fa-pen"></i>
       </span>
     </li>`
   )
