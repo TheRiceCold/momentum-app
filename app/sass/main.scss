@@ -53,11 +53,10 @@ header {
 }
 
 .mainBox {
-  margin-top: 10vh;
+  margin-top: 20vh;
   display: flex;
   flex-direction: column;
   height: 90vh;
-  justify-content: center;
   align-items: center;
 }
 
@@ -184,12 +183,6 @@ header {
   outline: none;
 }
 
-.has-goal {
-  margin-top: 1em;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
 ul.to-do{
   list-style-type: none;
   padding: 0;
@@ -309,4 +302,8 @@ ul.to-do{
 .done .to-do-item{
   text-decoration: line-through;
   color: rgba(255,255,255,0.8);
+}
+
+#mainFocus {
+  text-align: center;
 }

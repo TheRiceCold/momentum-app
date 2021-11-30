@@ -6,23 +6,31 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end; }
-  footer h4:first-child {
+  footer #logout {
     cursor: pointer;
     opacity: .75;
     margin-left: 15px;
     margin-bottom: 15px; }
-  footer h4:first-child:hover {
+  footer #logout:hover {
     opacity: 1; }
-  footer h4:nth-child(2) {
-    text-align: center;
-    height: 2vh;
-    font-weight: 200;
-    transform: translateY(-30px);
-    transition: transform .5s ease-in-out;
-    width: 36vw; }
-  footer h4:nth-child(2):hover {
-    font-weight: 200;
-    transform: translateY(-60px); }
+  footer #quotes {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    footer #quotes #quote {
+      font-weight: 100;
+      transition: transform .5s ease-in-out;
+      width: 100%;
+      font-size: 1.15em; }
+    footer #quotes span {
+      margin-top: 1vh; }
+    footer #quotes a {
+      margin: 0 20px;
+      font-size: .95em;
+      opacity: .5;
+      cursor: pointer; }
+    footer #quotes a:hover {
+      opacity: 1; }
   footer h4:last-child {
     cursor: pointer;
     margin-right: 15px;

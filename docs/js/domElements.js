@@ -13,6 +13,7 @@ export const focusTodayInput = document.querySelector('.toDoForm input')
 export const node = document.createElement('LI')
 export const todoInput = document.querySelector('ul')
 export const mainFocus = document.querySelector('#mainFocus')
+export const mainBox = document.querySelector('.mainBox')
 
 // Greeting
 export const greeting = document.querySelector('.js-greeting')
@@ -25,3 +26,4 @@ export const nameForm = document.querySelector('.js-nameForm')
 export const nameInput = nameForm.querySelector('input')
 
 // 
+export const logoutBtn = document.getElementById('logout')

@@ -4,6 +4,7 @@ import { loadName } from './components/greeting/nameForm.js'
 import { getRandomQuote } from './components/quotes/getQuotes.js'
 import { focusOfToday } from './components/focusoftoday/focusOfToday.js'
 import { showTasks } from './components/todolist/todoList.js'
+import { logout } from './components/logout.js'
 
 // window.addEventListener('DOMContentLoaded', e => {})
 window.onload = () => {
@@ -13,4 +14,5 @@ window.onload = () => {
   getRandomQuote()
   focusOfToday()
   showTasks()
+  logout()
 }

@@ -61,23 +61,31 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end; }
-  footer h4:first-child {
+  footer #logout {
     cursor: pointer;
     opacity: .75;
     margin-left: 15px;
     margin-bottom: 15px; }
-  footer h4:first-child:hover {
+  footer #logout:hover {
     opacity: 1; }
-  footer h4:nth-child(2) {
-    text-align: center;
-    height: 2vh;
-    font-weight: 200;
-    transform: translateY(-30px);
-    transition: transform .5s ease-in-out;
-    width: 36vw; }
-  footer h4:nth-child(2):hover {
-    font-weight: 200;
-    transform: translateY(-60px); }
+  footer #quotes {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    footer #quotes #quote {
+      font-weight: 100;
+      transition: transform .5s ease-in-out;
+      width: 100%;
+      font-size: 1.15em; }
+    footer #quotes span {
+      margin-top: 1vh; }
+    footer #quotes a {
+      margin: 0 20px;
+      font-size: .95em;
+      opacity: .5;
+      cursor: pointer; }
+    footer #quotes a:hover {
+      opacity: 1; }
   footer h4:last-child {
     cursor: pointer;
     margin-right: 15px;
@@ -189,11 +197,10 @@ header {
   display: block; }
 
 .mainBox {
-  margin-top: 10vh;
+  margin-top: 20vh;
   display: flex;
   flex-direction: column;
   height: 90vh;
-  justify-content: center;
   align-items: center; }
 
 #dateBox {
@@ -298,11 +305,6 @@ header {
 .toDoForm input:focus {
   outline: none; }
 
-.has-goal {
-  margin-top: 1em;
-  text-transform: uppercase;
-  letter-spacing: 0.04em; }
-
 ul.to-do {
   list-style-type: none;
   padding: 0; }
@@ -404,5 +406,8 @@ ul.to-do {
 .done .to-do-item {
   text-decoration: line-through;
   color: rgba(255, 255, 255, 0.8); }
+
+#mainFocus {
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */

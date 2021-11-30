@@ -1,4 +1,4 @@
-import { focusTodayInput, node, todoInput, mainFocus } from '../../domElements.js'
+import { focusTodayInput, node, todoInput, mainFocus, mainBox } from '../../domElements.js'
 
 export function focusOfToday() {	
 	if(!localStorage.focus) { 
@@ -15,10 +15,6 @@ export function focusOfToday() {
 
 function showFocusOfToday(){
 	mainFocus.textContent = 'Today\'s Goal: '
-	mainFocus.className += 'has-goal'
-	mainFocus.style.fontSize = '.75em'
-	mainFocus.style.fontWeight = '600'
-	
 	node.innerHTML = `
 	<span class="doneTodo">
 		<span class="check-box"></span>
