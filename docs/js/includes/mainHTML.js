@@ -1,8 +1,5 @@
-const timeSection = `
-<div id="dateBox" class="clockBox fadein invisible">
-  <p id="date"></p>
-  <h1 id="clock" class="clock"></h1>
-</div>`
+import { clockHTML } from './clockHTML.js'
+import { quotesHTML } from './quotesHTML.js'
 
 const focusOfToday = `
 <div class="js-toDoBox toDoBox fadein invisible">
@@ -29,16 +26,8 @@ const greetingSection = `
 
 export const mainHTML = `
 <main class="mainBox">
-  ${timeSection}
+  ${clockHTML}
   ${greetingSection}
   ${focusOfToday}
-  <div id="popup" class="overlay">
-    <a class="cancel" href="#"></a>
-    <div class="popup">
-      <h2>All Quotes</h2>
-      <div class="content">
-        <p>Click outside the popup to close.</p>
-      </div>
-    </div>
-  </div>
+  ${quotesHTML}
 </main>`

@@ -10,7 +10,7 @@ export const todoList = document.querySelector('.wrapper .todoList')
 
 // Focus Of The Day
 export const focusTodayInput = document.querySelector('.toDoForm input')
-export const node = document.createElement('LI')
+export const focusItem = document.createElement('LI')
 export const todoInput = document.querySelector('ul')
 export const mainFocus = document.querySelector('#mainFocus')
 export const mainBox = document.querySelector('.mainBox')

@@ -1,21 +1,23 @@
-import { focusTodayInput, node, todoInput, mainFocus, mainBox } from '../../domElements.js'
+import { focusTodayInput, todoInput, mainFocus, mainBox, focusItem } from '../../domElements.js'
+import { askFocusOfToday } from './askForFocus.js'
+
+function enterFocusOfToday(e) {
+	if(e.key === 'Enter' && focusTodayInput.value.trim() != 0) {
+		localStorage.focus = focusTodayInput.value
+		showFocusOfToday()
+	}
+}
 
 export function focusOfToday() {	
-	if(!localStorage.focus) { 
-		focusTodayInput.addEventListener('keypress', e => {
-			if(e.key === 'Enter') 
-				if (focusTodayInput.value !== '') {
-					localStorage.focus = focusTodayInput.value
-					showFocusOfToday()
-				}
-		})
-	} 
-	else showFocusOfToday()
+	if(localStorage.focus) 
+		showFocusOfToday()
+	else 
+		focusTodayInput.addEventListener('keypress', enterFocusOfToday)
 }
 
 function showFocusOfToday(){
 	mainFocus.textContent = 'Today\'s Goal: '
-	node.innerHTML = `
+	focusItem.innerHTML = `
 	<span class="doneTodo">
 		<span class="check-box"></span>
 	</span>
@@ -24,20 +26,14 @@ function showFocusOfToday(){
 	</span>
 	<span class="remove">x</span>`
 
-	todoInput.appendChild(node)
+	todoInput.append(focusItem)
 	focusTodayInput.style.display = 'none'
 
-	focusTodayInput.addEventListener('keypress', e => {
-		if(e.key === 'Enter' && focusTodayInput.value !== ''){
-			localStorage.focus = focusTodayInput.value
-			showFocusOfToday()
-		}
-	})
-
-	const button = document.querySelector('.doneTodo')
-	button.addEventListener('click', () => {
-		button.parentNode.classList.toggle('done')
-		localStorage.focusDone = (button.parentNode.className === 'done')
+	const donebtn = document.querySelector('.doneTodo')
+	donebtn.addEventListener('click', () => {
+		donebtn.parentNode.classList.toggle('done')
+		let isDone = donebtn.parentNode.className === 'done'
+		localStorage.focusDone = isDone
 	})
 
 	const remove = document.querySelector('span.remove')
@@ -45,16 +41,10 @@ function showFocusOfToday(){
 }
 
 function delFocusOfToday() {
-	node.parentNode.removeChild(node)
+	focusItem.remove()
 	delete localStorage.focus
 	delete localStorage.focusDone
 
-	mainFocus.className = 'goal'
-	mainFocus.textContent = 'What is your main focus for today?'
-	mainFocus.style.fontSize = '1em'
-	mainFocus.style.fontWeight = '100'
-	
-	focusTodayInput.style.display = ''
-	focusTodayInput.value = ''
-	node.className = ''
+	askFocusOfToday()
 }
+

@@ -1,5 +1,5 @@
 'use strict'
-import { showGreeting, removeGreetingAnim } from './greeting.js'
+import { showGreeting, removeAskName } from './greeting.js'
 import { 
   nameForm, nameInput, greetingBox, 
   askForName, greeting, dateBox,
@@ -34,7 +34,7 @@ export function submitName(e) {
 
   const currentValue = nameInput.value
   localStorage.setItem(NAME, currentValue)
-  removeGreetingAnim()
+  removeAskName()
   removeFormAni()
   seeAfterSubmit()
   showGreeting(currentValue)

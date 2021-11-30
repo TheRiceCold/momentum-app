@@ -1,4 +1,4 @@
-import { showGreeting, greetingTime } from './greeting.js'
+import { showGreeting, showGreetingTime } from './greeting.js'
 import { resize } from './resize.js'
 import { greetingBox } from '../../domElements.js'
 import { NAME } from './nameForm.js'
@@ -22,7 +22,7 @@ function handleSubmitRename(e) {
 
 function handleRenameBtnClick(event) {
   setRenameActive()
-  greetingTime()
+  showGreetingTime()
   const renameInput = document.querySelector('.js-renameInput')
   renameInput.value = localStorage.getItem(NAME)
   resize()

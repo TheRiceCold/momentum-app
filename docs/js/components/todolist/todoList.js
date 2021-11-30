@@ -1,39 +1,45 @@
 import { inputBox, todoList } from '../../domElements.js'
 
-let listArray = []
+let storedTodoList
 export function showTasks() {
-  listArray = localStorage.todoList == null ? [] : JSON.parse(localStorage.todoList)
-  let newTask = ''
-  listArray.forEach((element, index) => 
-    newTask += `
-    <li>${element}
-      <span class="icon" onclick="deleteTask(${index})">
-        <i class="fas fa-trash"></i>
-      </span>
-      <span class="icon" onclick="deleteTask(${index})">
-        <i class="fas fa-pen"></i>
-      </span>
-    </li>`
-  )
-  todoList.innerHTML = newTask
+  storedTodoList = 
+    !localStorage.todoList ? [] : 
+    JSON.parse(localStorage.todoList)
+
+  todoList.innerHTML = ''
+  storedTodoList.forEach((element, index) => todoList.append(addTodoItem(element, index)))
   inputBox.value = ''
 }
 
 inputBox.addEventListener('keypress', e => {
-  if(e.key === 'Enter') {
-    if(inputBox.value.trim() != 0) { 
-      listArray = localStorage.todoList == null ? [] : JSON.parse(localStorage.todoList)
-      listArray.push(inputBox.value)
-      localStorage.setItem('todoList', JSON.stringify(listArray))
-      showTasks()
-    }
+  if(e.key === 'Enter' && inputBox.value.trim() != 0) { 
+    storedTodoList.push(inputBox.value)
+    localStorage.todoList = JSON.stringify(storedTodoList)
+    showTasks()
   }
 })
 
 function deleteTask(index){
-  let getLocalStorageData = localStorage.getItem('todoList')
-  listArray = JSON.parse(getLocalStorageData)
-  listArray.splice(index, 1)
-  localStorage.setItem('todoList', JSON.stringify(listArray))
+  storedTodoList = JSON.parse(localStorage.todoList)
+  storedTodoList.splice(index, 1)
+  localStorage.todoList = JSON.stringify(storedTodoList)
   showTasks()
+}
+
+function addTodoItem(element, index) {
+  const listItem = document.createElement('LI')
+  listItem.textContent = element
+  
+  const delBtn = document.createElement('span')
+  delBtn.className = 'icon'
+  delBtn.innerHTML = '<i class="fas fa-trash"></i>'
+  delBtn.addEventListener('click', () => deleteTask(index))
+  
+  const editBtn = document.createElement('span')
+  editBtn.className = 'icon'
+  editBtn.innerHTML = '<i class="fas fa-pen"></i>'
+
+  listItem.append(delBtn, editBtn)
+
+  return listItem
 }
