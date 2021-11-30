@@ -4,7 +4,13 @@ export const quotesHTML = `
 <div class="popup">
   <h2>All Quotes</h2>
   <div class="content">
-    <p>Click outside the popup to close.</p>
+    <ul>
+      <li>
+        jdcoeqjvqokenqok
+      </li>
+      <li>jdcoeqjvqokenqok</li>
+      <li>jdcoeqjvqokenqok</li>
+    </ul>
   </div>
 </div>
 </div>`

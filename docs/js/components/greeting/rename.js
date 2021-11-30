@@ -1,5 +1,4 @@
 import { showGreeting, showGreetingTime } from './greeting.js'
-import { resize } from './resize.js'
 import { greetingBox } from '../../domElements.js'
 import { NAME } from './nameForm.js'
 
@@ -32,18 +31,23 @@ export function renameBtn() {
   const renameBtn = document.createElement('i')
   renameBtn.classList.add('fas', 'fa-pen')
   renameBtn.addEventListener('click', handleRenameBtnClick)
-  renameBtn.classList.add('js-renameBtn')
   renameBtn.classList.add('renameBtn')
-  greetingBox.appendChild(renameBtn)
+  greetingBox.append(renameBtn)
 }
 
-export function genRenameForm() {
+export function genRenameBox() {
   const renameBox = document.createElement('div')
   const renameInput = document.createElement('input')
   renameInput.classList.add('js-renameInput')
-  renameBox.classList.add('invisible', 'js-renameForm', 'renameForm')
+  renameBox.classList.add('invisible', 'js-renameForm', 'renameBox')
   renameBox.addEventListener('input', resize)
   renameBox.addEventListener('keypress', handleSubmitRename)
-  renameBox.appendChild(renameInput)
-  greetingBox.appendChild(renameBox)
+  renameBox.append(renameInput)
+  greetingBox.append(renameBox)
+}
+
+function resize() {
+  const renameInput = document.querySelector('.js-renameInput')
+  hide.innerText = renameInput.value
+  renameInput.style.width = hide.offsetWidth + 'px'
 }

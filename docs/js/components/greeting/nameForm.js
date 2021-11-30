@@ -4,8 +4,7 @@ import {
   nameForm, nameInput, greetingBox, 
   askForName, greeting, dateBox,
   toDoBox } from '../../domElements.js'
-import { resize, resizeGreet } from './resize.js'
-import { renameBtn, genRenameForm } from './rename.js'
+import { renameBtn, genRenameBox } from './rename.js'
 
 export const NAME = 'name'
 
@@ -14,7 +13,7 @@ function seeAfterSubmit() {
     dateBox.classList.remove('invisible')
     greeting.classList.remove('invisible')
     toDoBox.classList.remove('invisible')
-    genRenameForm()
+    genRenameBox()
     renameBtn()
   })
 }
@@ -25,7 +24,7 @@ function successLoad() {
   dateBox.classList.remove('invisible')
   greeting.classList.remove('invisible')
   toDoBox.classList.remove('invisible')
-  genRenameForm() 
+  genRenameBox() 
   renameBtn()
 }
 
@@ -52,7 +51,6 @@ function removeFormAni() {
 export function loadName() {
   const name = localStorage.getItem(NAME)
   if (!name) {
-    resizeGreet()
     nameForm.addEventListener('keypress', submitName)
   }
   else {

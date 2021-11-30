@@ -1,6 +1,5 @@
 'use strict'
 import { NAME } from './nameForm.js'
-import { resize } from './resize.js'
 import { greetingBox, hide, nameForm, greeting, askForName } from '../../domElements.js'
 
 export function removeAskName() {
@@ -16,9 +15,7 @@ export function showGreeting(name) {
 
   const curName = document.createElement('span')
   curName.textContent = name
-  curName.classList.add('.currentName')
-  
-  greeting.appendChild(curName)
+  greeting.append(curName)
 }
 
 export function showGreetingTime() {

@@ -9,10 +9,10 @@ function enterFocusOfToday(e) {
 }
 
 export function focusOfToday() {	
-	if(localStorage.focus) 
-		showFocusOfToday()
-	else 
+	if(!localStorage.focus) 
 		focusTodayInput.addEventListener('keypress', enterFocusOfToday)
+	else 
+		showFocusOfToday()
 }
 
 function showFocusOfToday(){
@@ -29,13 +29,14 @@ function showFocusOfToday(){
 	todoInput.append(focusItem)
 	focusTodayInput.style.display = 'none'
 
+	
 	const donebtn = document.querySelector('.doneTodo')
 	donebtn.addEventListener('click', () => {
 		donebtn.parentNode.classList.toggle('done')
 		let isDone = donebtn.parentNode.className === 'done'
 		localStorage.focusDone = isDone
 	})
-
+	
 	const remove = document.querySelector('span.remove')
 	remove.addEventListener('click', delFocusOfToday)
 }
@@ -44,7 +45,8 @@ function delFocusOfToday() {
 	focusItem.remove()
 	delete localStorage.focus
 	delete localStorage.focusDone
-
+	
 	askFocusOfToday()
+	focusTodayInput.addEventListener('keypress', enterFocusOfToday)
 }
 

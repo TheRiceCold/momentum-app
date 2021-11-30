@@ -6,8 +6,8 @@ import { focusOfToday } from './components/focusoftoday/focusOfToday.js'
 import { showTasks } from './components/todolist/todoList.js'
 import { logout } from './components/logout.js'
 
-// window.addEventListener('DOMContentLoaded', e => {})
-window.onload = () => {
+// addEventListener('DOMContentLoaded', e => {})
+onload = () => {
   backgroundImage()
   loadName()
   setInterval(dateAndTime, 1000)
