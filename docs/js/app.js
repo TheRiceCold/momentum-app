@@ -5,6 +5,7 @@ import { getRandomQuote } from './components/quotes/getQuotes.js'
 import { focusOfToday } from './components/focusoftoday/focusOfToday.js'
 import { showTasks } from './components/todolist/todoList.js'
 import { logout } from './components/logout.js'
+import { showAllQuotes } from './components/quotes/quoteList.js'
 
 // addEventListener('DOMContentLoaded', e => {})
 onload = () => {
@@ -15,4 +16,5 @@ onload = () => {
   focusOfToday()
   showTasks()
   logout()
+  showAllQuotes()
 }

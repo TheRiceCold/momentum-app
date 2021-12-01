@@ -336,7 +336,7 @@ ul.to-do{
   background: #fff;
   border: 1px solid #666;
   width: 50vw;
-  height: 50vh;
+  height: 70vh;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   position: relative;
 }
@@ -366,7 +366,7 @@ ul.to-do{
   opacity: 1;
 }
 .popup .content {
-  max-height: 400px;
+  max-height: 90%;
   overflow: auto;
   li {
     margin: 0 0 1em;
@@ -375,4 +375,27 @@ ul.to-do{
   li:last-child {
     margin: 0;
   }
+}
+
+.popup .content::-webkit-scrollbar {
+  display: none;
+}
+
+.task .content .text {
+	color: white;
+	font-size: 1em;
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+.task i {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+#focusList {
+  list-style: none;
+  font-size: 2em;
+  margin-top: 20px;
 }

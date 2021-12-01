@@ -76,7 +76,8 @@ footer {
       font-weight: 100;
       transition: transform .5s ease-in-out;
       width: 100%;
-      font-size: 1.15em; }
+      font-size: 1.15em;
+      text-align: center; }
     footer #quotes span {
       margin-top: 1vh; }
     footer #quotes a {
@@ -437,7 +438,7 @@ ul.to-do {
   background: #fff;
   border: 1px solid #666;
   width: 50vw;
-  height: 50vh;
+  height: 70vh;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   position: relative; }
 
@@ -467,12 +468,31 @@ ul.to-do {
   opacity: 1; }
 
 .popup .content {
-  max-height: 400px;
+  max-height: 90%;
   overflow: auto; }
   .popup .content li {
     margin: 0 0 1em;
     color: black; }
   .popup .content li:last-child {
     margin: 0; }
+
+.popup .content::-webkit-scrollbar {
+  display: none; }
+
+.task .content .text {
+  color: white;
+  font-size: 1em;
+  background: transparent;
+  border: 0;
+  outline: none; }
+
+.task i {
+  cursor: pointer;
+  margin-left: 10px; }
+
+#focusList {
+  list-style: none;
+  font-size: 2em;
+  margin-top: 20px; }
 
 /*# sourceMappingURL=main.css.map */

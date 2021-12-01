@@ -1,45 +1,76 @@
-import { inputBox, todoList } from '../../domElements.js'
+import { todoInput, todoList } from '../../domElements.js'
 
-let storedTodoList
+let storedTodoList = 
+	!localStorage.todoList ? [] : 
+	JSON.parse(localStorage.todoList)
+
 export function showTasks() {
-  storedTodoList = 
-    !localStorage.todoList ? [] : 
-    JSON.parse(localStorage.todoList)
-
-  todoList.innerHTML = ''
+	todoList.innerHTML = ''
   storedTodoList.forEach((element, index) => todoList.append(addTodoItem(element, index)))
-  inputBox.value = ''
+	todoInput.value = ''
 }
 
-inputBox.addEventListener('keypress', e => {
-  if(e.key === 'Enter' && inputBox.value.trim() != 0) { 
-    storedTodoList.push(inputBox.value)
-    localStorage.todoList = JSON.stringify(storedTodoList)
-    showTasks()
-  }
+showTasks()
+
+todoInput.addEventListener('keypress', e => {
+	if(e.key === 'Enter' && todoInput.value.trim() != 0) { 
+		storedTodoList.push(todoInput.value)
+		localStorage.todoList = JSON.stringify(storedTodoList)
+		showTasks()
+	}
 })
 
-function deleteTask(index){
-  storedTodoList = JSON.parse(localStorage.todoList)
+function addTodoItem(element, index) {
+	const todoItem = document.createElement('li')
+	todoItem.className = 'task'
+
+	const content = document.createElement('span')
+	content.className = 'content'
+		
+	todoItem.append(content)
+		
+	const todoText = document.createElement('input')
+	todoText.className = 'text'
+	todoText.type = 'text'
+	todoText.value = element
+	todoText.setAttribute('readonly', 'readonly')
+		
+	content.append(todoText)
+
+		
+	const editBtn = document.createElement('span')
+	editBtn.className = 'edit'
+	editBtn.innerHTML = '<i class="fas fa-pen"></i>'
+
+	const delBtn = document.createElement('span')
+	delBtn.className = 'delete'
+	delBtn.innerHTML = '<i class="fas fa-trash"></i>'
+
+	todoItem.append(editBtn, delBtn)
+	todoList.append(todoItem)
+
+	delBtn.addEventListener('click', () => deleteTask(index))
+	editBtn.addEventListener('click', () => editTask(index))
+
+	return todoItem
+}
+
+function deleteTask(index) {
   storedTodoList.splice(index, 1)
   localStorage.todoList = JSON.stringify(storedTodoList)
   showTasks()
 }
 
-function addTodoItem(element, index) {
-  const listItem = document.createElement('LI')
-  listItem.textContent = element
-  
-  const delBtn = document.createElement('span')
-  delBtn.className = 'icon'
-  delBtn.innerHTML = '<i class="fas fa-trash"></i>'
-  delBtn.addEventListener('click', () => deleteTask(index))
-  
-  const editBtn = document.createElement('span')
-  editBtn.className = 'icon'
-  editBtn.innerHTML = '<i class="fas fa-pen"></i>'
-
-  listItem.append(delBtn, editBtn)
-
-  return listItem
+function editTask(index) {
+	storedTodoList = JSON.parse(localStorage.todoList)
+	const todoText = document.querySelectorAll('input.text')[index]
+	todoText.removeAttribute('readonly')
+	todoText.focus()
+	todoText.addEventListener('keypress', e => {
+		if (e.key === 'Enter') {
+			storedTodoList[index] = todoText.value
+			todoText.setAttribute('readonly', 'readonly')
+			localStorage.todoList = JSON.stringify(storedTodoList)
+		}
+	})
 }

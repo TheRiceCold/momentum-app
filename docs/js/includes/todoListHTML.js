@@ -3,6 +3,5 @@ export const todoListHTML = `
   <div class="inputField">
     <input type="text" placeholder="Add your new todo">
   </div>
-  <ul class="todoList">
-  </ul>
+  <ul class="todoList"></ul>
 </div>`

@@ -1,4 +1,4 @@
-import { focusTodayInput, focusItem } from "../../domElements.js"
+import { focusTodayInput } from "../../domElements.js"
 
 export function askFocusOfToday() {
 	mainFocus.className = 'goal'
@@ -8,5 +8,4 @@ export function askFocusOfToday() {
 	
 	focusTodayInput.style.display = ''
 	focusTodayInput.value = ''
-	focusItem.className = ''
 }

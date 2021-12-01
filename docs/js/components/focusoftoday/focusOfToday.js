@@ -1,4 +1,4 @@
-import { focusTodayInput, todoInput, mainFocus, mainBox, focusItem } from '../../domElements.js'
+import { focusTodayInput, mainFocus, mainBox, focusBox } from '../../domElements.js'
 import { askFocusOfToday } from './askForFocus.js'
 
 function enterFocusOfToday(e) {
@@ -17,6 +17,7 @@ export function focusOfToday() {
 
 function showFocusOfToday(){
 	mainFocus.textContent = 'Today\'s Goal: '
+	const focusItem = document.createElement('LI')
 	focusItem.innerHTML = `
 	<span class="doneTodo">
 		<span class="check-box"></span>
@@ -26,7 +27,7 @@ function showFocusOfToday(){
 	</span>
 	<span class="remove">x</span>`
 
-	todoInput.append(focusItem)
+	focusBox.append(focusItem)
 	focusTodayInput.style.display = 'none'
 
 	
@@ -42,11 +43,10 @@ function showFocusOfToday(){
 }
 
 function delFocusOfToday() {
-	focusItem.remove()
+	focusBox.remove()
 	delete localStorage.focus
 	delete localStorage.focusDone
 	
 	askFocusOfToday()
 	focusTodayInput.addEventListener('keypress', enterFocusOfToday)
 }
-

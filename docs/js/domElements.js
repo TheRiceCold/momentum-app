@@ -5,13 +5,13 @@ export const dateToday = dateBox.querySelector('#date')
 export const toDoBox = document.querySelector('.js-toDoBox')
 
 // Todo List
-export const inputBox = document.querySelector('.inputField input')
+export const todoInput = document.querySelector('.inputField input')
 export const todoList = document.querySelector('.wrapper .todoList')
 
 // Focus Of The Day
 export const focusTodayInput = document.querySelector('.toDoForm input')
-export const focusItem = document.createElement('LI')
-export const todoInput = document.querySelector('ul')
+
+export const focusBox = document.getElementById('focusList')
 export const mainFocus = document.querySelector('#mainFocus')
 export const mainBox = document.querySelector('.mainBox')
 
@@ -29,4 +29,6 @@ export const nameInput = nameForm.querySelector('input')
 export const logoutBtn = document.getElementById('logout')
 export const quoteOfToday = document.getElementById('quote')
 export const quotePerson = document.getElementById('quotePerson')
-export const skipQuote = document.getElementById("skipQuote")
+export const skipQuote = document.getElementById('skipQuote')
+
+export const quoteList = document.getElementById('quoteList')
