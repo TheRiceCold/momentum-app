@@ -4,7 +4,7 @@ import { greetHTML } from './greetHTML.js'
 
 const focusOfToday = `
 <div class="js-toDoBox toDoBox fadein invisible">
-  <div class="js-toDoForm toDoForm">
+  <div class="focusTodayBox">
     <label id="mainFocus">What is your main focus today?</label>
     <input type="text"/>
   </div>

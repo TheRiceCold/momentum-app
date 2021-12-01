@@ -285,12 +285,12 @@ header {
 .toDoBox h4 {
   font-weight: 200; }
 
-.toDoForm {
+.focusTodayBox {
   display: flex;
   flex-direction: column;
   font-size: 2.25em; }
 
-.toDoForm input {
+.focusTodayBox input {
   margin-top: 2vh;
   font-size: 1em;
   text-align: center;
@@ -300,11 +300,11 @@ header {
   animation: rotatex 500ms linear;
   margin-bottom: 20vh; }
 
-.toDoForm input::placeholder {
+.focusTodayBox input::placeholder {
   color: white;
   opacity: 0.9; }
 
-.toDoForm input:focus {
+.focusTodayBox input:focus {
   outline: none; }
 
 ul.to-do {

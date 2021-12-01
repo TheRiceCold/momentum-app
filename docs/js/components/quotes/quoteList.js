@@ -1,8 +1,6 @@
-import { quoteList } from "../../domElements.js"
-
-let storedQuotes = 
-	!localStorage.quotes ? [] : 
-	JSON.parse(localStorage.quotes)
+import { quoteList } from '../../domElements.js'
+import { addQuote } from './addQuote.js'
+import { storedQuotes } from './getQuotes.js'
 
 export function showAllQuotes() {
 	quoteList.innerHTML = ''
@@ -19,7 +17,7 @@ function allQuotes(element, index) {
 	todoItem.append(content)
 		
 	const quoteText = document.createElement('textarea')
-	quoteText.className = 'text'
+	quoteText.id = 'quoteInput'
 	quoteText.style.color = 'black'
 	quoteText.style.resize = 'none'
 	quoteText.style.outline = 'none'
@@ -28,6 +26,7 @@ function allQuotes(element, index) {
 	quoteText.value = element.quote
 	
 	const personText = document.createElement('input')
+	personText.id = 'quotePersonInput'
 	personText.style.color = 'black'
 	personText.value = element.person
 	personText.style.outline = 'none'
@@ -47,8 +46,8 @@ function allQuotes(element, index) {
 	todoItem.append(editBtn, delBtn)
 	quoteList.append(todoItem)
 
-	delBtn.addEventListener('click', () => deleteTask(index))
-	editBtn.addEventListener('click', () => editTask(index))
+	delBtn.addEventListener('click', () => deleteQuote(index))
+	editBtn.addEventListener('click', () => editQuote(index))
 
 	return todoItem
 }
@@ -57,35 +56,40 @@ const quoteInput = document.getElementById('quoteInput')
 
 const quotePersonInput = document.getElementById('quotePersonInput')
 
-document.getElementById('addQuote').addEventListener('click', () => {
-	if(quoteInput.value.trim() != 0) { 
-		storedQuotes.push({ 
-			quote: quoteInput.value, 
-			person: 
-				quotePersonInput.value.trim() != 0 
-				? quotePersonInput.value
-				: 'unknown'})
-		localStorage.quotes = JSON.stringify(storedQuotes)
-		// showTasks()
-	}
-})
+document.getElementById('addQuote').addEventListener('click', addQuote)
 
-// function deleteTask(index) {
-//   storedTodoList.splice(index, 1)
-//   localStorage.todoList = JSON.stringify(storedTodoList)
-//   showTasks()
-// }
 
-// function editTask(index) {
-// 	storedTodoList = JSON.parse(localStorage.todoList)
-// 	const todoText = document.querySelectorAll('input.text')[index]
-// 	todoText.removeAttribute('readonly')
-// 	todoText.focus()
-// 	todoText.addEventListener('keypress', e => {
-// 		if (e.key === 'Enter') {
-// 			storedTodoList[index] = todoText.value
-// 			todoText.setAttribute('readonly', 'readonly')
-// 			localStorage.todoList = JSON.stringify(storedTodoList)
-// 		}
-// 	})
-// }
+function deleteQuote(index) {
+  storedQuotes.splice(index, 1)
+  localStorage.quotes = JSON.stringify(storedQuotes)
+  showAllQuotes()
+}
+
+function editQuote(index) {
+	const getQuoteInput = document.querySelectorAll('textArea#quoteInput')[index]
+	const getQuotePersonInput = document.querySelectorAll('input#quotePersonInput')[index]
+
+	getQuoteInput.removeAttribute('readonly')
+	getQuotePersonInput.removeAttribute('readonly')
+	getQuoteInput.focus()
+
+	getQuoteInput.addEventListener('keypress', e => {
+		if (e.key === 'Enter') {
+			storedQuotes[index].quote = getQuoteInput.value
+			getQuoteInput.setAttribute('readonly', 'readonly')
+			localStorage.quotes = JSON.stringify(storedQuotes)
+		}
+	})
+
+	onEnterEditInput(getQuotePersonInput, index)
+}
+
+function onEnterEditInput(input, index) {
+	input.addEventListener('keypress', e => {
+		if (e.key === 'Enter') {
+			storedQuotes[index].person = input.value
+			input.setAttribute('readonly', 'readonly')
+			localStorage.quotes = JSON.stringify(storedQuotes)
+		}
+	})
+}

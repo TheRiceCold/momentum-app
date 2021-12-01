@@ -1,6 +1,10 @@
 import { quoteOfToday, quotePerson, skipQuote } from '../../domElements.js'
 import { quotes } from './quotes.js'
 
+export let storedQuotes = 
+	!localStorage.quotes ? [] : 
+	JSON.parse(localStorage.quotes)
+
 export function getRandomQuote() {
   if (!localStorage.quotes) 
     localStorage.quotes = JSON.stringify(quotes)
