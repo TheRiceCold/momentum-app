@@ -1,5 +1,5 @@
 .wrapper{
-  background: rgb(34, 34, 34);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
   color: black;
   position: fixed;
   bottom: 0;
@@ -9,6 +9,7 @@
   border-radius: 5px;
   z-index: 10;
   height: 40vh;
+  width: 20vw;
   overflow: hidden;
   header{
     font-size: 30px;
@@ -19,7 +20,6 @@
     input{
       border-bottom: 1px solid white;
       color: white;
-      width: 95%;
       height: 100%;
       outline: none;
       background: transparent;
@@ -66,4 +66,8 @@
   .todoList::-webkit-scrollbar{
     display: none;
   }
+}
+
+span.content input{
+  width: 70%;
 }

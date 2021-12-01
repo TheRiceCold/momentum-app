@@ -1,15 +1,20 @@
 import { storedQuotes } from './getQuotes.js'
+import { addQuoteInput, addQuotePersonInput } from '../../domElements.js'
+import { showAllQuotes } from './showQuotes.js'
 
 export function addQuote() {
-	if (quoteInput.value.trim() == 0) return 
+	if (addQuoteInput.value.trim() == 0) return 
 	
 	storedQuotes.push({ 
-		quote: quoteInput.value, 
+		quote: addQuoteInput.value, 
 		person: 
-			quotePersonInput.value.trim() != 0 
-			? quotePersonInput.value
+			(addQuotePersonInput.value.trim() != 0)
+			? addQuotePersonInput.value
 			: 'unknown'
 		})
 
+	addQuoteInput.value = ''
+	addQuotePersonInput.value = ''
 	localStorage.quotes = JSON.stringify(storedQuotes)
+	showAllQuotes()
 }

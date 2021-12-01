@@ -16,9 +16,9 @@ export const addQuoteHTML = `
     <h2>Add New Quote</h2>
     <div class="content">
       <label style="color: black">Quote:</label>
-      <input id="quoteInput" style="color: black; border-bottom: 1px solid black; outline: none; width: 100%; margin-bottom: 20px" type="text" />
+      <input id="addQuoteInput" type="text" />
       <label style="color: black">Person Name:</label>
-      <input id="quotePersonInput" style="color: black; border-bottom: 1px solid black; outline: none; display: block; margin-bottom: 20px" type="text" />
+      <input id="addQuotePersonInput"type="text" />
       <button id="addQuote">Add Quote</button>
     </div>
   </div>

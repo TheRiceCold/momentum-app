@@ -97,7 +97,7 @@ footer {
     opacity: 1; }
 
 .wrapper {
-  background: #222222;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
   color: black;
   position: fixed;
   bottom: 0;
@@ -107,6 +107,7 @@ footer {
   border-radius: 5px;
   z-index: 10;
   height: 40vh;
+  width: 20vw;
   overflow: hidden; }
   .wrapper header {
     font-size: 30px;
@@ -116,7 +117,6 @@ footer {
     .wrapper .inputField input {
       border-bottom: 1px solid white;
       color: white;
-      width: 95%;
       height: 100%;
       outline: none;
       background: transparent;
@@ -156,6 +156,9 @@ footer {
   .wrapper .todoList::-webkit-scrollbar {
     display: none; }
 
+span.content input {
+  width: 70%; }
+
 body {
   margin: 0;
   overflow: hidden; }
@@ -174,13 +177,13 @@ header img {
   z-index: -1;
   animation: fadein .5s; }
 
-.hajimemashite {
+.askForName {
   font-size: 2.5em;
   text-align: center;
   margin-bottom: .5em; }
 
 .nameForm,
-.hajimemashite,
+.askForName,
 .renameBtn {
   display: none; }
 
@@ -494,5 +497,64 @@ ul.to-do {
   list-style: none;
   font-size: 2em;
   margin-top: 20px; }
+
+#addQuoteInput, #addQuotePersonInput {
+  color: black;
+  border-bottom: 1px solid black;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px; }
+
+.app-wrap {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)); }
+  .app-wrap input {
+    width: 100%;
+    max-width: 280px;
+    margin: 20px 15px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    transition: 0.2s ease-out; }
+  .app-wrap main {
+    flex: 1 1 100%;
+    padding: 25px 25px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; }
+  .app-wrap .location .city {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 5px; }
+  .app-wrap .location .date {
+    color: #fff;
+    font-size: 16px; }
+  .app-wrap .current .temp {
+    color: #fff;
+    font-size: 102px;
+    font-weight: 900;
+    margin: 30px 0px;
+    text-shadow: 2px 10px rgba(0, 0, 0, 0.6); }
+  .app-wrap .current .temp span {
+    font-weight: 500; }
+  .app-wrap .current .weather {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 15px;
+    text-shadow: 0px 3px rgba(0, 0, 0, 0.4); }
+  .app-wrap .current .hi-low {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+    text-shadow: 0px 4px rgba(0, 0, 0, 0.4); }
 
 /*# sourceMappingURL=main.css.map */

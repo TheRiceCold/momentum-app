@@ -1,5 +1,3 @@
-'use strict'
-import { NAME } from './nameForm.js'
 import { greetingBox, hide, nameForm, greeting, askForName } from '../../domElements.js'
 
 export function removeAskName() {

@@ -1,6 +1,6 @@
 export const greetHTML = `
 <div class="js-wholeGreeting">
-  <div class="js-hajimemashite hajimemashite fadein showing">
+  <div class="askForName fadein showing">
     Hello, what's your name?
   </div>
   <div class="js-greetingBox greetingBox">

@@ -1,12 +1,8 @@
-'use strict'
 import { showGreeting, removeAskName } from './greeting.js'
-import { 
-  nameForm, nameInput, greetingBox, 
+import { nameForm, nameInput, greetingBox, 
   askForName, greeting, dateBox,
   toDoBox } from '../../domElements.js'
 import { renameBtn, genRenameBox } from './rename.js'
-
-export const NAME = 'name'
 
 function seeAfterSubmit() {
   askForName.addEventListener('animationend', () => {
@@ -32,7 +28,7 @@ export function submitName(e) {
   if (e.key !== 'Enter') return
 
   const currentValue = nameInput.value
-  localStorage.setItem(NAME, currentValue)
+  localStorage.name = currentValue
   removeAskName()
   removeFormAni()
   seeAfterSubmit()
@@ -49,12 +45,11 @@ function removeFormAni() {
 }
 
 export function loadName() {
-  const name = localStorage.getItem(NAME)
-  if (!name) {
+  if (!localStorage.name) {
     nameForm.addEventListener('keypress', submitName)
   }
   else {
     successLoad()
-    showGreeting(name)
+    showGreeting(localStorage.name)
   }
 }
