@@ -6,7 +6,7 @@ import { focusOfToday } from './components/focusoftoday/focusOfToday.js'
 import { showTasks } from './components/todolist/todoList.js'
 import { logout } from './components/logout.js'
 import { showAllQuotes } from './components/quotes/showQuotes.js'
-import { showWeather } from './components/weather.js'
+import { setWeather } from './components/weather.js'
 
 // addEventListener('DOMContentLoaded', e => {})
 onload = () => {
@@ -18,6 +18,7 @@ onload = () => {
   showAllQuotes()
   focusOfToday()
   showTasks()
-  showWeather()
+  const searchbox = document.querySelector('.searchLocation')
+  searchbox.addEventListener('keypress', setWeather)
   logout()
 }

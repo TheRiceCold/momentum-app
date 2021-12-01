@@ -13,7 +13,6 @@ export function renderFocusOfToday() {
 		${localStorage.focus}
 	</span>
 	<span class="remove">x</span>`
-
 	focusBox.append(focusItem)
 	focusTodayInput.style.display = 'none'
 }

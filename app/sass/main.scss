@@ -400,6 +400,15 @@ ul.to-do{
   margin-top: 20px;
 }
 
+#quoteInput, #quotePersonInput {
+  font-size: 1em;
+} 
+
+ul#quoteList i{
+  cursor: pointer;
+  margin-left: 10px;
+}
+
 #addQuoteInput, #addQuotePersonInput {
   color: black; 
   border-bottom: 1px solid black; 
@@ -412,7 +421,6 @@ ul.to-do{
 .app-wrap {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
   
   input {
     width: 100%;
@@ -423,38 +431,26 @@ ul.to-do{
     background-color: transparent;
     border-bottom: 1px solid white;
     color: white;
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 1em;
     transition: 0.2s ease-out;
+
   }
-  
-  main {
-    flex: 1 1 100%;
-    padding: 25px 25px 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  input::placeholder { 
+    color: white;
   }
   
   .location .city {
-    color: #fff;
-    font-size: 32px;
+    color: white;
+    text-align: center;
+    font-size: 1em;
     font-weight: 500;
     margin-bottom: 5px;
   }
   
-  .location .date {
-    color: #fff;
-    font-size: 16px;
-  }
-  
   .current .temp {
     color: #fff;
-    font-size: 102px;
-    font-weight: 900;
-    margin: 30px 0px;
-    text-shadow: 2px 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    font-size: 2em;
   }
   
   .current .temp span {
@@ -462,20 +458,16 @@ ul.to-do{
   }
   
   .current .weather {
-    color: #fff;
-    font-size: 32px;
-    font-weight: 700;
-    font-style: italic;
-    margin-bottom: 15px;
-    text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
-  }
-  
-  .current .hi-low {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 500;
-    text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 1em;
+    text-align: center;
   }
 }
 
-
+#addQuote {
+  color: white;
+  background: black;
+  outline: none;
+  padding: 5px 5px;
+  cursor: pointer;
+}

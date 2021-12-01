@@ -1,4 +1,7 @@
-import { greetingBox, hide, nameForm, greeting, askForName } from '../../domElements.js'
+import { greetingBox, hide, 
+  nameForm, greeting, 
+  askForName, logoutBtn,
+  footer, todoWrapper } from '../../domElements.js'
 
 export function removeAskName() {
   askForName.classList.add('fadeout')
@@ -14,6 +17,10 @@ export function showGreeting(name) {
   const curName = document.createElement('span')
   curName.textContent = name
   greeting.append(curName)
+  
+  logoutBtn.classList.remove('invisible')
+  footer.classList.remove('invisible')
+  todoWrapper.classList.remove('invisible')
 }
 
 export function showGreetingTime() {

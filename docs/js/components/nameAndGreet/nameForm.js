@@ -1,12 +1,14 @@
 import { showGreeting, removeAskName } from './greeting.js'
 import { nameForm, nameInput, greetingBox, 
   askForName, greeting, dateBox,
-  toDoBox } from '../../domElements.js'
+  toDoBox, 
+  logoutBtn,
+  footer,
+  todoWrapper} from '../../domElements.js'
 import { renameBtn, genRenameBox } from './rename.js'
 
 function seeAfterSubmit() {
   askForName.addEventListener('animationend', () => {
-    dateBox.classList.remove('invisible')
     greeting.classList.remove('invisible')
     toDoBox.classList.remove('invisible')
     genRenameBox()
@@ -17,7 +19,6 @@ function seeAfterSubmit() {
 function successLoad() {
   nameForm.classList.remove('showing')
   askForName.classList.remove('showing')
-  dateBox.classList.remove('invisible')
   greeting.classList.remove('invisible')
   toDoBox.classList.remove('invisible')
   genRenameBox() 
@@ -47,6 +48,9 @@ function removeFormAni() {
 export function loadName() {
   if (!localStorage.name) {
     nameForm.addEventListener('keypress', submitName)
+    logoutBtn.classList.add('invisible')
+    footer.classList.add('invisible')
+    todoWrapper.classList.add('invisible')
   }
   else {
     successLoad()
